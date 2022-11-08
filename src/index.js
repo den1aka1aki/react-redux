@@ -17,13 +17,18 @@ const App = (params) => {
     const changeTitle = (taskId) => {
     store.dispatch(actions.titleChanged(taskId))
     }
+    const deleteTask = (taskId) => {
+        store.dispatch(actions.taskDeleted(taskId))
+    }
+
 return <> <h1>App</h1>
     <ul>
         {state.map(el=><li key={el.id}>
             <p>{el.title}</p>
             <p>{`Completed: ${el.completed}`}</p>
-            <button onClick={()=>completeTask(el.id)}>Button</button>
-            <button onClick={()=> changeTitle(el.id)}>Change title</button><hr/>
+            <button onClick={()=> completeTask(el.id)}>Button</button>
+            <button onClick={()=> changeTitle(el.id)}>Change title</button>
+            <button onClick={()=> deleteTask(el.id)}>Delete</button><hr/>
         </li>)}
     </ul>
 </>
