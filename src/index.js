@@ -6,6 +6,7 @@ import {
     completeTask,
     loadTasks,
     getTasks,
+    createTask,
     getTasksLoadingStatus
 } from './store/task'
 import configureStore from "./store/store";
@@ -31,6 +32,9 @@ const App = (params) => {
     const deleteTask = (taskId) => {
         dispatch(taskDeleted(taskId))
     }
+    const createNewTask = () => {
+        dispatch(createTask({title: "New Task" }))
+    }
     if (isLoading){
         return <h1>Loading</h1>
     }
@@ -46,6 +50,7 @@ const App = (params) => {
                 <button onClick={()=> dispatch(completeTask(el.id))}>Button</button>
                 <button onClick={()=> changeTitle(el.id)}>Change title</button>
                 <button onClick={()=> deleteTask(el.id)}>Delete</button>
+                <button onClick={createNewTask}>Add</button>
             </li>)}
         </ul>
     </>
